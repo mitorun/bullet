@@ -1,0 +1,667 @@
+<!doctype html><!-- Сайт bullet.none -->
+<html lang="en">
+<head>
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="/bullet.css">
+	<link rel="icon" type="image/svg+xml" sizes="any" href="/img/svg/favicon.svg">
+	<meta name="theme-color" content="#fdbe2b">
+	<meta name="author" content="Oleg Mitorun">
+
+	<title>Bullet</title>
+	<meta name="description" content="Your modern and convenient guide to the world of weapons culture.">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Bullet">
+	<meta property="og:description" content="Your modern and convenient guide to the world of weapons culture.">
+	<meta property="og:site_name" content="Bullet">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="/img/og.jpg">
+	<!--<meta property="og:url" content="https://mitorun.studio/">-->
+
+	<!--<link rel="canonical" href="https://mitorun.studio/">-->
+	<link rel="preload" as="image" href="/img/sprite.svg">
+	<link rel="preload" as="image" href="/img/main-firstscreen.webp">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+	<header class="header">
+		<div class="container">
+			<div class="header-grid">
+				<a class="header-brand" href="/" aria-current="page" aria-label="bullet">
+					<!--<img src="/img/logo.png" alt="logo">-->
+					<svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" importance="high">
+						<mask id="mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="96" height="96">
+							<circle cx="50" cy="50" r="48" fill="#3F4751" />
+						</mask>
+						<g id="logo" mask="url(#mask)">
+							<rect width="100" height="100" fill="#3F4751" />
+							<path d="M38 16L26 83L43 100H100V51L65 16L57 35L38 16Z" fill="#212628" />
+							<g id="bullet">
+								<path d="M26 76V83H48V76H46V34C46 30 44 26 44 26L40 18C38.5 15 35.5 15 34 18L30 26C30 26 28 30 28 34V76H26Z" fill="#FFD400" />
+								<path d="M47 38H27V76H47V38Z" fill="#FDB811" />
+								<path d="M40 18C39.32 16.63 38.25 15.75 37 15.75V83H48V76H47V38H46V34C46 30 44 26 44 26L40 18Z" fill="#00000021" />
+							</g>
+							<use href="#bullet" transform="translate(27)" />
+						</g>
+					</svg>
+				</a>
+
+
+				<nav class="navbar-collapse collapse" id="navbar">
+					<ul class="navbar-nav">
+						<li><a class="nav-link" href="/shop/">Shop</a></li>
+						<li><a class="nav-link" href="/shop/">Range</a></li>
+						<li><a class="nav-link" href="/shop/">Courses</a></li>
+						<li><a class="nav-link" href="/shop/">Service</a></li>
+						<li><a class="nav-link" href="/shop/">News</a></li>
+					</ul>
+				</nav>
+
+
+				<form class="form-search" target="_blank" method="get" action="https://www.google.com/search">
+					<label class="vh" for="search">Site search</label>
+					<input id="search" name="q" type="search" placeholder="Site search" title="Search for:" aria-label="Site search">
+					<input type="hidden" name="sitesearch" value="mitorun.studio/">
+					<button type="submit" value="Search" title="Start search">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#search"></use>
+						</svg>
+					</button>
+				</form>
+
+
+
+				<div class="icons">
+					<a class="icon icon-favorites" href="#" aria-label="Go to favorites" title="Favorites">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#favorite"></use>
+						</svg>
+					</a>
+
+					<a class="icon icon-cart" href="#" aria-label="Go to cart" title="Cart">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#cart"></use>
+						</svg>
+					</a>
+
+					<button class="icon icon-account dialog-open" type="button" data-bs-toggle="modal" data-bs-target="#registration" aria-label="Open login dialog" title="Login">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#account"></use>
+						</svg>
+					</button>
+
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" title="Menu" aria-label="Navigation menu">
+						<span class="navbar-toggler-line"></span>
+					</button>
+
+				</div>
+			</div>
+
+
+		</div>
+	</header>
+
+
+
+
+	<main>
+
+		<!-- Bullet Firstscreen: -->
+		<section class="section">
+			<div class="s-width">
+				<div class="container">
+					<div class="firstscreen" importance="high">
+						<h1>Bullet - your modern <br>and convenient guide <br>to the world of weapons culture</h1>
+						<a class="button" href="#">Explore</a>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="container">
+				<div class="menutabs">
+					<a class="m-l-1" href="#"><span>Shooting Range</span></a>
+					<a class="m-l-2" href="#"><span>Shopping</span></a>
+					<a class="m-l-3" href="#"><span>Courses</span></a>
+					<a class="m-l-4" href="#"><span>Service</span></a>
+					<a class="m-l-5" href="#"><span>Blog</span></a>
+				</div>
+
+			</div>
+		</section>
+
+
+
+
+		<!-- Discount: -->
+		<section class="section">
+			<div class="container">
+
+				<h2>Discount</h2>
+
+				<div class="gallery-wrap">
+					<ul class="gallery">
+						<li class="card">
+							<h3 class="card-title"><a class href="/shop/shotgun/">Glock G37 Gen3 PI3750201 45 GAP 4.49" 10+1 Black Steel Slide Black</a></h3>
+							<p class="card-tag">Handgun</p>
+							<img class="card-img" src="/img/card-15.webp" alt="Товар №1">
+							<div class="card-rating"></div>
+							<div class="card-buy">
+								<p class="card-buy-price cbp-680">$599</p>
+								<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+							</div>
+							<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+						</li>
+
+
+						<li class="card">
+							<h3 class="card-title"><a class href="/shop/shotgun/">Mil-Spec AR-15 5.56 NATO 16" Barrel B5</a></h3>
+							<p class="card-tag">Rifle</p>
+							<img class="card-img" src="/img/card-04.webp" alt="Товар №1">
+							<div class="card-rating"></div>
+							<div class="card-buy">
+								<p class="card-buy-price cbp-1499">$1253</p>
+								<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+							</div>
+							<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+						</li>
+
+
+						<li class="card">
+							<h3 class="card-title"><a class href="/shop/shotgun/">BROWNING CITORI 725 SPORTING NON PORTED 12 GA</a></h3>
+							<p class="card-tag">Shotgun</p>
+							<img class="card-img" src="/img/card-10.webp" alt="Товар №1">
+							<div class="card-rating"></div>
+							<div class="card-buy">
+								<p class="card-buy-price cbp-3580">$2979</p>
+								<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+							</div>
+							<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+						</li>
+					</ul>
+				</div>
+
+
+				<div class="pagination">
+					<button class="pagination-btn current"></button>
+					<button class="pagination-btn"></button>
+					<button class="pagination-btn"></button>
+					<button class="pagination-btn"></button>
+					<button class="pagination-btn"></button>
+					<button class="pagination-ahead"></button>
+				</div>
+
+			</div>
+		</section>
+
+
+
+
+		<!-- Shooting Galleries: -->
+		<section class="section">
+			<div class="container">
+
+				<h2>Shooting Galleries</h2>
+
+				<div class="shootgal">
+					<h3>Gallery A — 10m<span class="h3-gun gun-1"></span></h3>
+
+					<div class="shootgal-grid">
+						<div>
+							<ul>
+								<li>4 standing shooting ranges</li>
+								<li>Stationary targets</li>
+								<li>Personal and group trainings</li>
+								<li>Corporate events</li>
+								<li>Perfect for first-timers</li>
+							</ul>
+
+							<h4>Pricing</h4>
+							<p>Weekdays — $10 per hour<br>Weekends — $15 per hour</p>
+						</div>
+
+
+						<div>
+							<p>If you are just starting your journey into the arms world, This range is for you! Only for pistols.</p>
+							<p>Exciting emotions and adrenaline rush will be provided by our exellent equipment. Meanwhile safety and desire to return will be guaranteed by our magnificent trainers.</p>
+
+							<button class="button-2" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Book a range for me</button>
+						</div>
+
+
+						<img src="/img/main-06a.webp" alt="Shooting Gallery A">
+					</div>
+				</div>
+
+
+				<div class="shootgal">
+					<h3>Gallery B — 25m<span class="h3-gun gun-1"></span><span class="h3-gun gun-2"></span><span class="h3-gun gun-3"></span></h3>
+
+					<div class="shootgal-grid">
+						<div>
+							<ul>
+								<li>6 shooting ranges — standing and sedentary</li>
+								<li>Stationary targets</li>
+								<li>Personal and group trainings</li>
+								<li>Corporate and sporting events</li>
+								<li>Perfect for amateurs and advanced</li>
+							</ul>
+
+							<h4>Pricing</h4>
+							<p>Weekdays — $15 per hour<br>Weekends — $20 per hour</p>
+						</div>
+
+
+						<div>
+							<p>This range is for those who once tried and loved to shoot some bullets in 10-meters-gallleries.</p>
+							<p>Get a challenge — try a larger one. As a bonus you are now allowed to use rifles and shotguns! Get your registration and have fun!</p>
+
+							<button class="button-2" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Book a range for me</button>
+						</div>
+
+
+						<img src="/img/main-06b.webp" alt="Shooting Gallery B">
+					</div>
+				</div>
+
+
+				<div class="shootgal">
+					<h3>Gallery C — 50m<span class="h3-gun gun-2"></span><span class="h3-gun gun-3"></span><span class="h3-gun gun-4"></span></h3>
+
+					<div class="shootgal-grid">
+						<div>
+							<ul>
+								<li>5 shooting ranges — sedentary and lying</li>
+								<li>Moving targets</li>
+								<li>Personal and group trainings</li>
+								<li>Corpoate and sporting events</li>
+								<li>Perfect for riflemans</li>
+							</ul>
+
+							<h4>Pricing</h4>
+							<p>Weekdays — $25 per hour<br>Weekends — $30 per hour</p>
+						</div>
+
+
+						<div>
+							<p>This range is specially designed for riflemans. Here you could both master and improve your skills. At this range targets are moving in 4 different directions:</p>
+							<ul>
+								<li>left and right — to make it harder for you</li>
+								<li>forward and backward — after the end of shooting, your target will come to you, not vice versa.</li>
+							</ul>
+
+							<button class="button-2" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Book a range for me</button>
+						</div>
+
+
+						<img src="/img/main-06c.webp" alt="Shooting Gallery C">
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+
+
+		<!-- Courses: -->
+		<section class="section">
+			<div class="container">
+
+				<h2>Courses</h2>
+
+				<div class="gallery2">
+					<div class="card2">
+						<h3>Handgun basics</h3>
+						<div>
+							<p>In this course you will learn how to operate your weapon correctly. Classes are held in groups of 20 people.</p>
+							<p>The course provides 6 hours of theoretical and 16 hours of practical studies.</p>
+						</div>
+						<p class="card2-price"><span>Price:</span> $165</p>
+						<button class="card2-btn" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Call me back</button>
+					</div>
+
+
+					<div class="card2">
+						<h3>Prevention of accidents</h3>
+						<div>
+							<p>Mandatory course to be allowed to buy, possess and transport your own weapons.</p>
+							<p>Next modules included:</p>
+							<ul>
+								<li>own and public safety</li>
+								<li>the laws, possibilities and responsibility</li>
+								<li>first aid</li>
+								<li>materiel</li>
+								<li>psychological tests</li>
+							</ul>
+						</div>
+						<p class="card2-price"><span>Price:</span> $250</p>
+						<button class="card2-btn" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Call me back</button>
+					</div>
+
+
+					<div class="card2">
+						<h3>Personal training</h3>
+						<div>
+							<p>For those who want to improve their skills of practical shooting (IPSC).</p>
+							<p>From local to international events at any discipline with your personal team.</p>
+							<p>Please note that price of this course is calculated individually based on many factors.</p>
+						</div>
+						<p class="card2-price"><span>Price:</span> from $15 per hour</p>
+						<button class="card2-btn" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Call me back</button>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+
+
+		<!-- Service: -->
+		<section class="section s-width">
+			<div class="container">
+
+				<div class="artblock">
+					<div class="artblock-text">
+						<h2>Service</h2>
+						<p>Is your weapon broken? Are you short on time or experience for service? Or maybe you want some unique custom weapons? Then you should definitely contact our service center!</p>
+						<p>We provide a full range of technical services in the arms market - from cleaning to parts manufacturing. We also offer a humane pricing for routine types of work.</p>
+						<p>Our experts are taking care of your equipment from 10 a.m. to 8 p.m. everyday. We are glad to help you!</p>
+						<br><br>
+						<button class="button" type="button" data-bs-toggle="modal" data-bs-target="#consultation" aria-label="Open dialog">Get free consultation</button>
+					</div>
+
+					<img class="artblock-img" src="/img/main-04.webp" alt="weapons and ammunition on the table">
+				</div>
+
+			</div>
+		</section>
+
+
+
+		<!-- Last news: -->
+		<section class="section">
+			<div class="container">
+
+				<h2>Last news</h2>
+
+				<div class="gallery3">
+					<div class="card3 c3-1">
+						<h3><a class href="#">New amendments to legislation</a></h3>
+						<p>Recent amendments to legislation have had a dramatic impact on the Canadian gun industry. Bill C-71 proposed new regulations for gun licenses, including making it mandatory for gun owners to take safety courses and more taxes on ammunition. The bill also restricts people from possessing automatic rifles, which are prohibited in Canada without special authorization...</p>
+						<span class="card3-more">Read more</span>
+						<div class="news-date">
+							<span>News</span>
+							<time datetime="2021-11-22">22 nov 2021</time>
+						</div>
+					</div>
+
+					<div class="card3 c3-2">
+						<h3><a class href="#">National competition results - handgun and rifle disciplines</a></h3>
+						<p>A few days ago national competition ended. The jury has already announced the winners in all two disciplines. In handgun discipline first place goes to Carl Jones from Toronto. In rifle discipline first place goes to John Hawkins from Quebec.</p>
+						<span class="card3-more"></span>
+						<div class="news-date">
+							<span>Events</span>
+							<time datetime="2021-11-01">01 nov 2021</time>
+						</div>
+					</div>
+
+					<div class="card3 c3-3">
+						<h3><a class href="#">Our new service center</a></h3>
+						<p>We are glad to announce to you the opening of our new service and warranty center! Now we can repair your weapon if it breaks down, serve weapons if you don't have enough time and even modify it to suit your individual requirements. The first 300 people to sign an annual service contract will receive one more year as a bonus. If you are interested, please contact us by phone, e-mail or...</p>
+						<span class="card3-more">Read more</span>
+						<div class="news-date">
+							<span>News</span>
+							<time datetime="2021-10-15">15 oct 2021</time>
+						</div>
+					</div>
+				</div>
+
+				<a class="morenews btn-center" href="#">More news</a>
+			</div>
+		</section>
+
+
+
+		<!-- Why choose us: -->
+		<section class="section s-width p-40">
+			<div class="container">
+
+				<h2>Why choose us</h2>
+
+				<div class="gallery4">
+					<div class="card4">
+						<h3>Consumer choice</h3>
+						<p>About 15% of all customers choose us.</p>
+						<p>30% of all new users choose us, about 50% of them become our regular customers. We are growing!</p>
+					</div>
+
+					<div class="card4">
+						<h3>All services in one place</h3>
+						<p>We offer our clients a shopping center, a shooting range, training courses, certification courses, service, and communication with like-minded people in one place.</p>
+						<p>We are more than just an organization. We are the epitome of weapons community and culture!</p>
+					</div>
+
+					<div class="card4">
+						<h3>Competent staff</h3>
+						<p>Our employees don`t know what rudeness is. But they perfectly know the whole range of goods and the list of services.</p>
+						<p>Here you will be helped and made happy!</p>
+					</div>
+				</div>
+
+				<button class="button btn-center" type="button" data-bs-toggle="modal" data-bs-target="#registration" aria-label="Open login dialog">Become part of the community</button>
+			</div>
+		</section>
+
+
+
+
+		<!-- Contact Us: -->
+		<section class="section">
+			<div class="container">
+
+				<h2>Contact Us</h2>
+
+				<div class="contact-grid">
+					<form class="form">
+						<!--<p class="vh">Написать на почту</p>-->
+						<div class="form-group">
+							<input class="form-input" id="formName" type="text" name="name" autocomplete="name" maxlength="40" minlength="4" placeholder=" ">
+							<label class="form-label" for="formName">Your name</label>
+						</div>
+
+						<div class="form-group">
+							<input class="form-input" id="formTel" type="tel" name="tel" autocomplete="tel" maxlength="16" minlength="6" placeholder=" " required="">
+							<label class="form-label" for="formTel">Phone number *</label>
+						</div>
+
+						<div class="form-group">
+							<input class="form-input" id="formEmail" type="email" name="email" autocomplete="email" maxlength="100" minlength="6" placeholder=" " required="">
+							<label class="form-label" for="formEmail">Email *</label>
+						</div>
+
+						<div class="form-group">
+							<textarea class="form-input" id="formMessage" autocomplete="off" maxlength="2000" minlength="12" name="message" placeholder=" " rows="4"></textarea>
+							<label for="formMessage" class="form-label">Comment</label>
+						</div>
+
+						<button class="button" type="submit">Call me back</button>
+					</form>
+
+
+					<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d93386.85625970173!2d-82.3990679!3d42.9921904!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c91dfd0dc4ecf79%3A0x3ad00e6ff4e6c964!2sWalmart%20Supercentre!5e0!3m2!1sen!2sru!4v1638676960461!5m2!1sen!2sru" width="680" height="419" title="map with our location" style="max-height:400rem; border:0;" allowfullscreen="" loading="lazy"></iframe>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+
+	<!-- Footer: -->
+	<footer class="footer">
+		<div class="container">
+
+			<div class="footer-grid">
+				<a class="footer-logo" href="/" aria-current="page">
+					<svg width="40" height="40" viewBox="0 0 100 100" aria-label="bullet">
+						<use href="#logo" />
+						<!--<mask id="mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="96" height="96">
+							<circle cx="50" cy="50" r="48" fill="#3F4751"/>
+						</mask>
+						<g mask="url(#mask)">
+							<rect width="100" height="100" fill="#3F4751"/>
+							<path d="M38 16L26 83L43 100H100V51L65 16L57 35L38 16Z" fill="#212628"/>
+							<g id="bullet">
+								<path d="M26 76V83H48V76H46V34C46 30 44 26 44 26L40 18C38.5 15 35.5 15 34 18L30 26C30 26 28 30 28 34V76H26Z" fill="#FFD400"/>
+								<path d="M47 38H27V76H47V38Z" fill="#FDB811"/>
+								<path d="M40 18C39.32 16.63 38.25 15.75 37 15.75V83H48V76H47V38H46V34C46 30 44 26 44 26L40 18Z" fill="#00000021"/>
+							</g>
+							<use href="#bullet" transform="translate(27)"/>
+						</g>-->
+					</svg>
+				</a>
+
+
+				<ul class="footer-links footer-menu">
+					<li><a class href="/shop/">Shop</a></li>
+					<li><a class href="/shop/">Range</a></li>
+					<li><a class href="/shop/">Courses</a></li>
+					<li><a class href="/shop/">Service</a></li>
+					<li><a class href="/shop/">News</a></li>
+				</ul>
+
+
+				<ul class="footer-links">
+					<li><a class href="#">Help & Contacts</a></li>
+					<li><a class href="#">Vacancies</a></li>
+					<li><a class href="#">Partnership</a></li>
+					<li><a class href="#">Wholesale</a></li>
+					<li>
+						<select name="" id="">
+							<option value="">En</option>
+							<option value="">Ru</option>
+						</select>
+					</li>
+				</ul>
+
+
+				<ul class="footer-links footer-info">
+					<li><a class href="#">About</a></li>
+					<li><a class href="#">Terms of Use</a></li>
+					<li><a class href="#">Return and Refund Policy</a></li>
+				</ul>
+
+
+				<div class="footer-links footer-tels">
+					<p>Call-center</p>
+					<div><a href="tel:+1077225331">+1 (07) 722-53-31</a></div>
+					<div><a href="tel:+1637298409">+1 (63) 729-84-09</a></div>
+				</div>
+
+
+				<div class="footer-links copyright">
+					<div><a clas rel="noopener" target="_blank" href="https://www.behance.net/gallery/132435653/BULLET-More-than-just-a-shop">Design Denis Klimenko</a></div>
+					<div><a class href="https://mitorun.studio/">Code Mitorun Studio</a></div>
+					<div>© 2021 bullet.none</div>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+
+	<!-- Модал №1 для регистрации: -->
+	<div class="modal fade" id="registration" tabindex="-1" aria-hidden="true" aria-labelledby="modalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<button class="modal-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть диалог"></button>
+
+				<form class="form">
+					<h3 id="modalLabel">Registration</h3>
+					<div class="form-group">
+						<input class="form-input" id="formName2" type="text" name="name" autocomplete="name" maxlength="40" minlength="4" placeholder=" ">
+						<label class="form-label" for="formName2">Your name</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formTel2" type="tel" name="tel" autocomplete="tel" maxlength="16" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formTel2">Phone number *</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formEmail2" type="email" name="email" autocomplete="email" maxlength="100" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formEmail2">Email *</label>
+					</div>
+
+					<label class="check">
+						<input class="check-input" type="checkbox">
+						<span class="check-box"></span>I confirm that I am 21 years old
+					</label>
+
+					<label class="check">
+						<input class="check-input" type="checkbox">
+						<span class="check-box"></span>I consent to the processing of my personal data
+					</label>
+
+					<div class="btn-wrap">
+						<button class="button" type="button" data-bs-dismiss="modal">Register now</button>
+						<a class="button-login" href="#"><span>Already have an account?</span><br>Login</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Модал №2 для консультации: -->
+	<div class="modal fade" id="consultation" tabindex="-1" aria-hidden="true" aria-labelledby="modalLabel2">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<button class="modal-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть диалог"></button>
+
+				<form class="form">
+					<h3 id="modalLabel2">Consultation</h3>
+					<div class="form-group">
+						<input class="form-input" id="formName3" type="text" name="name" autocomplete="name" maxlength="40" minlength="4" placeholder=" ">
+						<label class="form-label" for="formName3">Your name</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formTel3" type="tel" name="tel" autocomplete="tel" maxlength="16" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formTel3">Phone number *</label>
+					</div>
+
+					<div class="btn-wrap">
+						<button class="button" type="button" data-bs-dismiss="modal">Call me back</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Все скрипты сайта: -->
+	<!--<script defer src="/mitorun.js"></script>-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+	<noscript>У вас в браузере отключён JavaScript</noscript>
+
+
+</body>
+
+</html>

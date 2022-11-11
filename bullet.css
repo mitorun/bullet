@@ -1,0 +1,2339 @@
+/* Сайт bullet.com */
+
+:root {
+	--font-family: 'Roboto Condensed', 'IBM Plex Sans', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif;/* font-family для обычного текста */
+	--font-family-heading: 'Bebas Neue', 'Roboto Condensed', 'Jost', 'Futura', 'IBM Plex Sans', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif;/* font-family для заголовков */
+	--font-size-xl: 18px;
+	--font-size-l: 16px;
+	--font-size-m: 14px;
+	--font-size-s: 12px;
+	--font-size-xs: 10px;
+	--line-height-m: 1.5;/* базовый текст body, у оригинала был 1.17 */
+	--line-height-s: 1.2;/* уменьшенный */
+	--container-padding: 14px;/* боковые отступы у контейнеров */
+	--margin-l: 60px;/* отступ большой (между секциями), 88px у донора */
+	--margin-m: 34px;/* отступ средний (по краям секций?), 40px? у донора */
+	--margin-s: 14px;/* отступ маленький (между карточками, менюшками), 16px у донора */
+	--margin-xs: 6px;/* отступ маленький (между карточками, менюшками), ?px у донора */
+
+	--color: hsl(0, 0%, 0%);/* базовый цвет текста ("чёрный" для светлой темы и наоборот). Раньше было --color: hsl(0, 0%, 0%); Примеры: hsl(var(--color)), hsl(var(--color) / 0.65) */
+	--bg: hsl(0, 0%, 100%);/* базовый цвет фона ("белый" для светлой темы и наоборот) */
+	--color-grey: hsla(0, 0%, 0%, 0.55);/* чёрный полупрозрачный цвет текста ("серый" для светлой темы и наоборот). Было --color-transparent */
+	--color-grey-light: hsla(0, 0%, 0%, 0.2);/* чёрный полупрозрачный цвет текста ("светло-серый" для светлой темы и наоборот) */
+
+	--color-main: hsl(42, 98%, 58%);/* было hsl(42, 98%, 53%) у донора; главный цвет (для акцента на важных элементах) */
+	--color-main-dark: hsl(213, 11%, 33%);/* было hsl(42, 98%, 53%) у донора; главный цвет (для акцента на важных элементах) */
+	--color-second: hsl(213, 11%, 33%);/* в оригинале hsl(213, 12%, 28%) */
+	--color-green: hsl(139, 100%, 19%);/* зелёный цвет (для текста). В бутстрапе hsl(152, 69%, 31%) */
+	--color-red: hsl(2, 100%, 28%);/* красный цвет (для текста). В бутстрапе hsl(354, 70%, 54%) */
+
+	--border: 0.5px solid var(--color-grey);/* лёгкая рамка (для карточек, разделов) */
+	--border-2: 0.5px solid hsl(197, 10%, 14%);/* лёгкая рамка (для карточек, разделов) */
+	--shadow: 0 6px 14px 3px hsla(0, 0%, 0%, 0.02), 0 5px 10px 3px hsla(42, 100%, 22%, 0.05);/* базовая тень (для карточек, блоков, картинок) */
+	/*--shadow: 0 5px 10px hsla(0, 0%, 0%, 0.1), 0 4px 10px 4px hsla(42, 98%, 53%, 0.04); базовая тень (для карточек, блоков, картинок) */
+	tab-size: 2;/* стоит в modern-normalize */
+}
+
+@media (min-width: 576px) {
+	:root {
+		--container-padding: 60px;/* боковые отступы у контейнеров */
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		/*--color: hsl(0, 0%, 17%);*/
+		--margin-l: 110px;
+		--margin-m: 44px;
+		--margin-s: 16px;
+		--margin-xs: 8px;
+	}
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	/*outline: 1px solid hsla(0, 100%, 50%, 0.3);
+	outline-offset: 0; это для тестирования границ элементов (переполнение) */
+}
+
+*:focus {
+	outline-offset: 1px;
+}
+
+html {
+	scroll-behavior: smooth;/* это для плавного скролла по якорям, только если в браузере не стоит предпочтения убирать анимации */
+}
+
+body {
+	min-height: 100vh;
+	font: 400 var(--font-size-m, 14px)/var(--line-height-m, 1.5) var(--font-family, sans-serif);
+	color: var(--color, hsl(0, 0%, 0%));
+	background-color: var(--bg, hsl(0, 0%, 100%));
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);/* эти оба свойства из бутстрапа */
+}
+
+/* Ниже даны стандартные настройки для заголовков сайта. Они будут работать по тегу без добавления класса, а также и по аналогичному классу (можно добавить для любого элемента). Например можно применять конструкции типа <h1 class="h3"> */
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-weight: 700;
+	font-family: var(--font-family-heading, sans-serif);
+	line-height: var(--line-height-s, 1.2);
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+}
+
+h1,
+.h1 {
+	margin-bottom: 1em;/* было 10px; */
+	font-size: 24px;
+	/*text-align: center;*/
+}
+
+@media (min-width: 1024px) {
+	h1,
+	.h1 {
+		margin-bottom: 12px;
+		font-size: 34px;
+	}
+}
+
+h2,
+.h2 {
+	margin-bottom: 1.1em;/* было 24px; */
+	font-size: 24px;
+	text-align: center;
+}
+
+h3,
+.h3 {
+	/*margin: 0 0 28px;*/
+	margin-bottom: 1em;/* было 18px; */
+	font-size: 18px;
+	transition: 0.3s;
+}
+
+h4,
+.h4 {
+	/*margin: 0 0 8px;*/
+	margin-bottom: 8px;
+	font-weight: 500;
+	font-size: 14px;
+	font-family: var(--font-family, sans-serif);
+	letter-spacing: 0.01em;
+}
+
+/* Ниже описаны размеры и цвета для базового текста: */
+
+p:not([class]) /*p:not(:last-of-type)*/,
+.p {
+	margin-bottom: 1em;/* или лучше var(--font-size-m)? */
+}/* нужно записать селектор так, чтобы он был максимально практичным */
+
+.font-xl {
+	font-size: var(--font-size-xl, 18px);
+	line-height: var(--line-height-s, 1.2);
+}/* это класс для очень большого текста */
+
+.font-l {
+	font-size: var(--font-size-l, 16px);
+	line-height: var(--line-height-m, 1.5);
+}/* это класс для большого текста */
+
+.font-m {
+	font-size: var(--font-size-m, 14px);
+	line-height: var(--line-height-m, 1.5);
+}/* это класс для среднего текста */
+
+.font-s {
+	font-size: var(--font-size-s, 12px);
+	line-height: var(--line-height-s, 1.2);
+}/* это класс для маленького текста */
+
+.font-xs {
+	font-size: var(--font-size-xs, 10px);
+	line-height: var(--line-height-s, 1.2);
+}/* это класс для очень маленького текста */
+
+b,
+strong,
+.b,
+.bold,
+.font-b {
+	font-weight: 700;/* или 600; */
+}/* это класс для жирного текста (bold) */
+
+i,
+.i {
+	font-style: oblique;/*italic*/
+}
+
+.g,
+.grey,
+.font-g {
+	color: var(--color-grey);/* было var(--black-transparent); */
+}/* это класс для серого текста (второстепенного) */
+
+.green {
+	color: var(--color-green);
+}/* это класс для зелёного текста (успех) */
+
+.red {
+	color: var(--color-red);
+}/* это класс для красного текста (ошибка) */
+
+.yellow {
+	color: var(--color-yellow);
+}/* это класс для жёлтого текста (предупреждение) */
+
+a,
+button,
+input,
+textarea,
+summary,
+optgroup,
+select,
+svg {
+	font: inherit;
+	color: inherit;
+	/*text-decoration: none; эксперимент, чтобы не писать отдельно для ссылки */
+	touch-action: manipulation;/* или pan-x pan-y pinch-zoom; это убирает задержку ≈300мс после клика на тачскринах (ожидание дабл клика), но имеет такой минус, что элемент остаётся подсвеченным при возвращении на страницу, например кнопка меню после нажатия так и остаётся с синим фоном и это очень мешает. С этим свойством ещё нужно разбираться.
+	Чтобы убрать синее подсвечивание - нужно элементу вернуть значение touch-action: auto; */
+}/* сюда нужно собрать все интерактивные теги-элементы, на которые можно нажимать и у которых настройки текста не наследуются */
+
+a {
+	text-decoration: none;
+	color: inherit;
+	transition: 0.3s;
+}
+
+a:not([class]):hover,
+.link:hover {
+	color: var(--color-main);
+}
+
+/*a:visited {
+	color: initial;
+}*/
+
+ul:not([class]),
+ol:not([class]),
+.list {
+	margin: 0 0 1em;/* или margin-bottom: var(--font-size-m) */
+	padding: 0 0 0 20px;/* думаю лучше не задавать отступ в em, иначе будут криво равняться li с разными размерами шрифтов */
+}/* это класс для стандартного вида списков ul/ol */
+
+ul[class],
+ol[class] {
+	list-style: none;
+}
+
+/*ul:not([class]) {
+	list-style-type: square;
+} это изменение маркера на квадратики */
+
+ul:not([class]) li:not([class]),
+ol:not([class]) li:not([class]),
+dl:not([class]) dd:not([class]) {
+	/*list-style-type:"⚠"; пример изменения вида маркеров */
+	margin-bottom: 0.1em;/* или 0.5em */
+}
+
+hr,
+.hr {
+	border: 0;
+	border-bottom: 1px solid var(--color-grey);
+}
+
+abbr[title] {
+	text-decoration: underline dotted;
+	/*cursor: help; этот курсор бывает закрывает первую букву во всплывашке */
+	text-decoration-skip-ink: none;/* указывает чтобы подчёркивания не обрывались если наезжают на букву */
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 0.75em;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+svg {
+	display: block;/* это вроде также избавляет от непонятного отступа снизу */
+	/*line-height: 0; это вроде также избавляет от непонятного отступа снизу */
+	shape-rendering: geometricprecision;/* это чтобы SVG рендерились со сглаживанием. auto | optimizeSpeed | crispEdges для чётких пиксельных линий без сглаживания | geometricPrecision | inherit */
+	/*fill: currentColor; или var(--color) или inherit */
+	/*stroke: currentColor; или var(--color) или inherit */
+}
+
+img {
+	display: block;/* это избавляет от пустой строки под картинкой, равной line-height. У этого способа есть минус когда нам не нужно чтобы картинка была блочной. Ещё один способ - это задать родителю картинки display: flex; и line-height: 0; ? */
+	max-width: 100%;/* или width: 100%; */
+	height: auto;/* или max-height: 100%; */
+	object-fit: cover;
+	/*line-height: 0; это вроде также избавляет от непонятного отступа снизу */
+	/*background-color: hsl(0, 0%, 85%);*/
+	/*content-visibility: auto; это чтобы браузер не тратил ресурсы на картинку, пока не получит её (полностью?) */
+	/*image-rendering: pixelated; убирает сглаживание растровых картинок при масштабировании, делая чёткие пиксельные картинки */
+}
+
+figure {
+	width: fit-content;
+	margin: var(--font-size-m, 14px) auto 30px;
+}
+
+figcaption {
+	margin-top: 0.6em;
+	font-size: var(--font-size-s, 12px);
+	text-align: center;
+	color: var(--color-grey);/* было var(--black-transparent); */
+}
+
+/*-------------------------------------------------
+----- Ниже настройки основных блоков страниц: -----
+-------------------------------------------------*/
+
+/*.main {
+	padding: 32px 0; это отступ между хедером и хлебными крошками
+	box-shadow: var(--shadow);
+}*/
+
+.section {
+	margin-bottom: var(--margin-l, 88px);
+	/*padding-top: 90px;
+	padding-bottom: 90px;*/
+}
+
+.container {
+	/*position: relative; это для позиционирования aside с содержанием статей, надо поискать другой способ этот блок расположить */
+	/*max-width: 924px; 896px + (2*14px) */
+	max-width: calc(896px + 2 * var(--container-padding, 14px));/* было 480px или 1236px или 1300px */
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: var(--container-padding, 14px);
+	padding-left: var(--container-padding, 14px);
+
+	/*background: content-box hsla(39, 100%, 50%, 0.05);
+	outline: 2px dashed hsla(39, 100%, 50%, 0.4); это для тестирования */
+}/* это делает ширину контентной части 1200px на десктопах, а в мобильных версиях отступы по краям по 50px (для смартфонов <575px отступы уменьшаются до 15px) */
+
+/*.mb-xl {
+	margin-bottom: var(--margin-xl, 144px);
+}*/
+
+.mb-l {
+	margin-bottom: var(--margin-l, 88px);
+}
+
+.mb-m {
+	margin-bottom: var(--margin-m, 44px);
+}
+
+.mb-s {
+	margin-bottom: var(--margin-s, 16px);
+}
+
+.mb-xs {
+	margin-bottom: var(--margin-xs, 8px);
+}
+
+noscript {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 4px 0;
+	font: 400 14px/1.1 monospace;
+	text-align: center;
+	color: var(--color-red, red);
+	background: hsl(0, 0%, 100%);
+	/*border: 1px solid var(--color-red, red);*/
+}
+
+
+/*---------------------------------------------------------
+------------------- Хедер и меню: -------------------------
+---------------------------------------------------------*/
+
+.header {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	letter-spacing: 0.015em;
+}
+
+/* Это верхняя строка с менюшками:
+.header-grid2 {
+	display: none;
+}
+@media (min-width: 1024px) {
+	.header-link2 {
+		font-size: var(--font-size-s, 12px);
+		line-height: var(--line-height-s, 1.2);
+		transition: .3s;
+	}
+	.header-link2:not(select):hover {
+		color: var(--color-main);
+	}
+	select.header-link2 {
+		margin-top: -2px;
+		border: none;
+	}
+}*/
+
+.header-grid {
+	display: grid;
+	align-items: center;
+}
+
+@media (max-width: 1023.99px) {
+	.header-grid {
+		grid: min-content min-content / 1fr min-content;/*было grid-template-columns: 1fr auto;*/
+		/*padding: 12px 0; это было в старом коде, убрал для пробы! */
+	}
+}
+
+@media (min-width: 1024px) {
+	.header-grid {
+		grid: min-content / min-content auto 1fr min-content;
+		gap: var(--margin-m);/*40px;*/
+		padding: 22px 0 20px;
+	}
+}
+
+@media (min-width: 576px) {
+	.header-brand {
+		display: flex;
+		align-items: center;
+		/*gap: 2px;
+		width: 84px;*/
+		height: 40px;
+	}
+
+	.header-brand::before,
+	.header-brand::after {
+		content: 'BU';
+		padding-top: 3px;
+		font: 600 24px/1 var(--font-family-heading);
+		letter-spacing: 0.05em;
+	}
+
+	.header-brand::after {
+		content: 'ET';
+		margin-left: 1px;
+	}
+}
+
+/* Код для раскрытия-появления области меню: */
+
+@media (max-width: 1023.98px) {
+	.navbar-collapse /* было .menu */ {
+		grid-area: 2 / 1 / 3 / 3;
+		place-self: center;
+		/*display: grid;
+		grid-template-columns: min-content;
+		place-items: center;
+		align-content: center; зачем это было? не помню */
+
+		/*gap: var(--margin-s);*/
+		/*height: 0; старое! это скрывает меню! У FilamentGroup было max-height: 0; */
+		/*opacity: 0; старое! это для анимации раскрытия, скрывает меню! */
+		/*overflow: hidden; это было у доноров, но оно обрезает фокус у менюшек. Можно вернуть если вокруг менюшек добавить отступы */
+		/*will-change: height; это экспериментальное свойство, оно оповещает браузер что будет смещение объекта, у FilamentGroup */
+		/*transition: height .6s, opacity .4s; было transition: max-height .2s ease-out; у FilamentGroup */
+
+		/*background: content-box hsla(106, 100%, 45%, 0.05);
+		outline: 2px dashed hsla(106, 100%, 45%, 0.4); это для тестирования */
+	}
+}
+
+/* Скрытие меню когда оно не открыто скриптом (.show): */
+
+@media (max-width: 1023.98px) {
+	.collapse:not(.show) {
+		display: none;
+	}
+}
+
+/* Анимация раскрытия/закрытия меню.
+Класс .collapsing добавляет скрипт к .navbar-collapse
+Видимо это базовый стиль при использовании скрипта collapse */
+
+.collapsing {
+	height: 0;
+	/*opacity: 0;*/
+	overflow: hidden;
+	transition: height 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.collapsing {
+		transition: none;
+	}
+}
+
+.navbar-nav {
+	/*list-style: none;*/
+	/*display: grid;
+	grid-template-columns: min-content;
+	place-items: center;
+	align-content: center; это старый код */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--margin-s);
+
+	/*background: content-box hsla(106, 100%, 45%, 0.05);
+	outline: 2px dashed hsla(106, 100%, 45%, 0.4); это для тестирования */
+}
+
+@media (max-width: 1023.98px) {
+	.navbar-nav {
+		flex-direction: column;
+		padding: 20px 0 30px;
+	}
+}
+
+.nav-link {
+	/*display: inline-block;*/
+	padding: 8px 0;
+	font-size: 20px;
+	transition: 0.3s;
+}
+
+.nav-link[aria-current='page'] {
+	font-weight: 700;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+	color: var(--color-main);
+	/*border-color: var(--color-main);*/
+}
+
+@media (min-width: 1024px) {
+	.nav-link {
+		/*padding: 6px 4px;*/
+		font-size: 14px;
+		/*border: 1px solid transparent;*/
+	}
+}
+
+.form-search {
+	display: none;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	height: 32px;
+	padding: 8px;
+	border: 0.5px solid hsl(213, 13%, 28%);
+	/*border-radius: 1px;*/
+}
+
+@media (min-width: 1024px) {
+	.form-search {
+		display: flex;
+	}
+}
+
+.form-search input {
+	width: 100%;
+}
+
+.form-search input,
+.form-search button {
+	background: none;
+	border: none;
+	appearance: none;
+}
+
+.form-search button svg {
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+
+.icons {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.icon {
+	position: relative;
+	/*display: inline-block;*/
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	background-color: transparent;
+	border-radius: 22px;
+	transition: 0.2s 0.1s;
+}
+
+.icon svg {
+	width: 22px;
+	height: 22px;
+}
+
+.icon::before {
+	position: absolute;
+	top: -2px;
+	right: 1px;
+	width: 16px;
+	height: 16px;
+	overflow: hidden;
+	font-size: 11px;
+	line-height: 1.455;
+	text-align: center;
+	background-color: var(--color-main, hsl(42, 98%, 53%));
+	border-radius: 50%;
+}
+
+.icon-cart::before {
+	content: '3';
+}
+
+.dialog-open {
+	font: 500 14px/var(--line-height-s, 1.2) var(--font-family);
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.icon-favorites {
+	display: none;
+}
+
+@media (min-width: 576px) {
+	.icon-favorites {
+		display: grid;
+	}
+
+	.icon-favorites::before {
+		content: '22';
+	}
+}
+
+@media (min-width: 576px) {
+	.icon-account {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		width: auto;
+		padding: 0 8px;
+	}
+
+	.icon-account::after {
+		content: 'Login';
+	}
+}
+
+/* Внешний вид кнопки меню: */
+
+.navbar-toggler {
+	position: relative;
+	/*z-index: 1; это надо или нет? */
+	/*display: inline-block;  это вроде у button по умолчанию?! */
+	width: 44px;
+	height: 44px;
+	margin-right: -9px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;/* или 0; или transparent; ? *//*transparent;*//*  или rgba(0,0,0,0); это вообще убирает синий фон в хроме при нажатии на кнопку! */
+	/*touch-action: auto; это возвращает стандартное поведение, что синий фон появляется только на полсекунды при клике и изчезает, но на мобилках возвращаетсяи задержка 300мс после клика */
+}
+
+@media (min-width: 1024px) {
+	.navbar-toggler {
+		display: none;
+	}
+}
+
+/*.navbar-toggler:focus {
+	outline: 0;
+} это было на Веб-стандартах. Вероятно мне нужно создать альтернативу аутлайну, так как могут быть сценарии где будет бургер-меню при работе с клавиатуры */
+
+.navbar-toggler-line,
+.navbar-toggler-line::after,
+.navbar-toggler-line::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 22px;
+	height: 2px;
+	/*border-radius: 1px; это можно добавить если дизайн поменяется на закруглённый */
+	background: var(--color, hsl(0, 0%, 0%));
+}
+
+.navbar-toggler-line {
+	top: 50%;
+	left: 11px;
+	transform: translateY(-50%);/* это для смещения элемента на пол его высоты, в сочетании с top:50% это распологает элемент ровно по центру родителя */
+	transition: transform 0.3s linear;
+}
+
+.navbar-toggler-line::before {
+	top: -7px;
+	/*left: 0;*/
+	transition: top 0.3s 0.2s linear;
+}
+
+.navbar-toggler-line::after {
+	bottom: -7px;
+	/*left: 0;*/
+	transition: bottom 0.3s 0.2s linear, transform 0.3s linear;
+}
+
+/* Ниже анимация бургера при клике: */
+
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-line {
+	transform: rotate(45deg);
+	transition: transform 0.3s 0.2s linear;
+}
+
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-line::before {
+	top: 0;
+	opacity: 0;
+	transition: top 0.3s linear, opacity 0.3s 0.2s linear;
+}
+
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-line::after {
+	bottom: 0;
+	transform: rotate(90deg);/* или простое (-90deg) */
+	transition: bottom 0.3s linear, transform 0.3s 0.2s linear;
+}
+
+
+
+
+/*-------------------------------------------------
+----- 1) Главная страница сайта (Main Page) -------
+----------------- /bullet.com/ --------------------
+-------------------------------------------------*/
+
+.s-width {
+	letter-spacing: 0.01em;
+	color: hsl(0, 0%, 100%);
+	background-color: hsl(213, 13%, 28%);
+}
+
+.firstscreen {
+	height: 310px;
+	margin-right: calc(-1 * var(--container-padding));
+	margin-bottom: var(--margin-m);
+	margin-left: calc(-1 * var(--container-padding));
+	padding: 0 var(--container-padding);
+	background: url('/img/main-firstscreen.webp') 20% 50%/cover;/* было 376px у донора */
+}
+
+@media (min-width: 1024px) {
+	.firstscreen {
+		height: 376px;/* было 376px у донора */
+	}
+}
+
+.firstscreen h1 {
+	margin-bottom: 22px;
+	padding-top: 130px;
+	color: var(--color);
+}
+
+@media (min-width: 1024px) {
+	.firstscreen h1 {
+		padding-top: 154px;
+	}
+}
+
+.button,
+.button-2,
+.button-3 {
+	display: inline-block;
+	min-width: 50px;
+	min-height: 40px;
+	/*margin: 0 0 40px;*/
+	padding: 12px 20px 11px;
+	font: 400 18px/1 var(--font-family-heading, sans-serif);
+	letter-spacing: 0.02em;
+	text-align: center;
+	text-transform: uppercase;
+	color: hsl(0, 0%, 0%);
+	background: var(--color-main, yellow);
+	border: 1px solid var(--color-main, yellow);
+	cursor: pointer;
+	transition: 0.3s 0.1s;
+	-webkit-appearance: none;
+	appearance: none;/* Это чтобы на кнопку подействовали маржины и размеры *//* это было на кнопках у Shadeed */
+}
+
+.button-2 {
+	font-size: 14px;
+	font-family: var(--font-family);
+	letter-spacing: 0;
+	background: transparent;
+}
+
+.button-3 {
+	color: var(--color-second);
+	background: transparent;
+	border-color: var(--color-second);
+}
+
+.button:hover {
+	box-shadow: 0 0 28px hsla(42, 98%, 58%, 0.3);
+	/*transform: translateY(-2px);*/
+	transition: 0.3s;
+}
+
+.button-2:hover,
+.button-3:hover {
+	color: var(--color-main);
+	transition: 0.3s;
+}
+
+/*.button:active,
+.button-text:active {
+	opacity: 1;
+	transform: translateY(2px);
+} эта анимация при нажатии почти незаметна или не работает, можно удалить?! */
+
+.button-login {
+	display: inline-block;
+	padding: 8px 16px;
+	text-align: center;
+}
+
+.button-login span {
+	font-size: 10px;
+	color: var(--color);
+}
+
+.btn-center {
+	/*display: flex;
+	margin-left: auto;
+	margin-right: auto; такой вариант центрирования работает только на <button> */
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+
+
+
+
+
+
+.menutabs {
+	display: grid;
+	grid: 150px 150px / 1fr 1fr 1fr;
+	gap: var(--margin-s);
+}
+
+@media (min-width: 1024px) {
+	.menutabs {
+		grid: 195px 195px / 1fr 1fr 1fr 1fr;
+	}
+}
+
+.menutabs a {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font: 400 18px/1 var(--font-family-heading);
+	letter-spacing: 0.03em;
+	color: hsl(0, 0%, 100%);
+	background-color: hsl(213, 13%, 28%);
+	background-position: 50%;
+	background-size: cover;
+	transition: 1s 0.2s;
+}
+
+.menutabs a span {
+	padding: 6px 16px 4px;
+	border: 1px solid transparent;
+	/*text-shadow: 0 0 10px black;*/
+	transition: 0.4s;
+}
+
+.menutabs a:hover span {
+	color: var(--color-main);
+	border: 1px solid var(--color-main);
+}
+
+.menutabs a:hover {
+	box-shadow: inset 0 0 40px 100px hsla(42, 93%, 12%, 0.3);
+	/*filter: brightness(85%);*/
+	/*backdrop-filter: brightness(60%);*/
+	transition: 0.8s;
+}
+
+/*.menutabs a:hover::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1.1;
+	background: radial-gradient(hsla(43, 80%, 8%, 0.4), hsla(0, 0%, 0%, 1));
+}*/
+
+/*.menutabs a:hover {
+	transform: scale(1.1);
+}*/
+
+.m-l-1 {
+	grid-column: span 2;
+	background-image: url('/img/main-01.webp');
+}
+
+@media (min-width: 1024px) {
+	.m-l-1 {
+		grid-row: span 2;
+		grid-column: span 1;
+	}
+}
+
+.m-l-2 {
+	background-image: url('/img/main-02.webp');
+}
+
+@media (min-width: 1024px) {
+	.m-l-2 {
+		grid-column: span 3;
+	}
+}
+
+.m-l-3 {
+	background-image: url('/img/main-03.webp');
+}
+
+.m-l-4 {
+	background-image: url('/img/main-04.webp');
+}
+
+.m-l-5 {
+	background-image: url('/img/main-05.webp');
+}
+
+
+
+
+/*------ Галерея с карточками товаров Discount: -----*/
+
+.gallery-wrap {
+	margin: 0 -10px;
+	padding: 2px 10px 16px;
+	overflow: auto;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(278px, 288px));
+	/* было grid: 1fr / 1fr 1fr 1fr; */
+	justify-content: center;
+	gap: var(--margin-s, 16px);
+	/*margin-bottom: var(--margin-m); это будет нужно когда появится пагинация */
+}
+
+.card {
+	position: relative;
+	display: grid;
+	grid-template-rows: 176px auto 1fr auto auto;
+	gap: 8px;
+	width: 100%;
+	/*width: 288px; у донора было 288px */
+	min-width: 278px;
+	max-width: 300px;
+	padding: var(--margin-s);
+	letter-spacing: 0.02em;
+	border: var(--border);
+	transition: 0.3s;
+}
+
+.card:hover,
+.load:hover {
+	box-shadow: var(--shadow);
+}
+
+.card-img {
+	grid-area: 1 / 1 / 2 / 2;
+	width: 100%;
+	height: 100%;
+}
+
+.card-tag {
+	grid-area: 2 / 1 / 3 / 2;
+	overflow: hidden;
+	font: 400 var(--font-size-s, 12px)/var(--line-height-s, 1.2) var(--font-family, sans-serif);
+	white-space: nowrap;
+	text-transform: uppercase;
+	text-overflow: ellipsis;
+	color: var(--color-grey);/* это чтобы текст не переносился на вторую строку *//* это чтобы лишний текст вне элемента скрывался *//* это чтобы текст скрывался за тремя точками */
+}
+
+.card-title {
+	max-height: calc(2em * var(--line-height-s, 1.2));
+	/*white-space: nowrap; это чтобы текст не переносился на вторую строку */
+	overflow: hidden;
+	font: 500 var(--font-size-m, 14px)/var(--line-height-s, 1.2) var(--font-family, sans-serif);
+	text-overflow: ellipsis;/* это чтобы лишний текст вне элемента скрывался *//* это чтобы текст скрывался за тремя точками */
+}
+
+.card-title a::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	/*z-index: 1;*/
+}
+
+.card-rating {
+	position: relative;
+	width: 80px;
+	height: 16px;
+	/*background: url('/img/svg/star_black_24dp.svg') 0% / 16px 16px;*/
+	background: url('/img/sprite.svg#star') 0% / 16px 16px;
+}
+
+.card-buy {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 0 0;
+}
+
+.card-buy-price {
+	font: 600 18px/1 var(--font-family);
+}
+
+.card-buy-price::after {
+	position: relative;
+	top: -0.4em;
+	margin-left: 8px;
+	font-weight: 400;
+	font-size: 14px;
+	text-decoration: line-through;
+	color: var(--color-main);
+}
+
+.cbp-680::after {
+	content: '$680';
+}
+
+.cbp-1499::after {
+	content: '$1499';
+}
+
+.cbp-3580::after {
+	content: '$3580';
+}
+
+.card .icon,
+.product-grid .icon {
+	width: 36px;
+	height: 36px;
+	/*padding: 4px;*/
+	background-color: hsl(0, 0%, 100%);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 22px 22px;
+	border: none;
+	border-radius: 99px;
+	cursor: pointer;
+	transition: 0.3s;
+	appearance: none;
+}
+
+.card-buy-cart {
+	/*z-index: 1.5;*/
+	/*background-image: url('/img/svg/shopping_cart_black_24dp.svg');*/
+	background-image: url('/img/sprite.svg#cart');
+}
+
+/*.card-buy-cart:hover {
+	background-image: url('/img/svg/cart-full.svg');
+}*/
+
+.card-favorite {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	/*z-index: 1.3;*/
+	/*grid-area: 1 / 1 / 2 / 2;
+	place-self: start end;*/
+	/*background-image: url('/img/svg/favorite_border_black_24dp.svg');*/
+	background-image: url('/img/sprite.svg#favorite');
+}
+
+/*.card-favorite:hover {
+	background-image: url('/img/svg/favorite_black_24dp.svg');
+}*/
+
+.card-favorite.added {
+	fill: var(--color-main);
+}
+
+.icon:hover {
+	background-color: hsl(0, 0%, 94%);
+	transition: 0.2s;
+}
+
+/* Конец стилей карточки */
+
+
+
+
+/* Пагинация точками и пулями: */
+
+.pagination {
+	display: none;/*display: flex;*/
+	justify-content: center;
+	gap: 8px;
+}
+
+.pagination > button {
+	background-color: none;
+	border: none;
+}
+
+.pagination-btn {
+	width: 8px;
+	height: 8px;
+	background-color: hsl(0, 0%, 0%);
+	border: none;
+	border-radius: 9px;
+}
+
+.pagination-btn.current {
+	background-color: var(--color-main);
+}
+
+.pagination-ahead {
+	width: 24px;
+	height: 8px;
+	background: url('/img/svg/bullet_right.svg') 50%;
+}
+
+
+/* Раздел Shooting Galleries: */
+
+.shootgal {
+	/*width: 67%;
+	max-width: 800px;*/
+	margin-bottom: 28px;
+	padding: 24px var(--margin-s);/* было 24px у донора */
+	border: var(--border);
+	transition: 0.3s;
+}
+
+.shootgal h3 {
+	color: var(--color-main-dark);
+}
+
+.h3-gun {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	margin: 0 0 -8px 10px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.gun-1 {
+	background-image: url('/img/svg/gun-1.svg');
+}
+
+.gun-2 {
+	background-image: url('/img/svg/gun-2.svg');
+}
+
+.gun-3 {
+	background-image: url('/img/svg/gun-3.svg');
+}
+
+.gun-4 {
+	background-image: url('/img/svg/gun-4.svg');
+}
+
+/*.shootgal-grid {
+	padding: 0 8px; этот отступ был у дизайнера
+}*/
+
+@media (min-width: 480px) {
+	.shootgal-grid {
+		display: grid;
+		grid: auto / 1fr 1fr;
+		gap: var(--margin-s);
+		/*columns: 3 240px;
+		column-gap: 16px; это было до грида */
+		/*padding: 0 8px; этот отступ был у дизайнера */
+	}
+}
+
+@media (min-width: 1024px) {
+	.shootgal-grid {
+		display: grid;
+		grid: auto / 1fr 1fr 1fr;
+	}
+}
+
+.shootgal img {
+	display: none;
+}
+
+@media (min-width: 1024px) {
+	.shootgal img {
+		display: block;
+		height: 100%;
+		max-height: 240px;
+	}
+}
+
+.shootgal:hover {
+	box-shadow: var(--shadow);
+}
+
+
+
+
+/* Галерея с карточками курсов: */
+
+.gallery2 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card2 {
+	display: grid;
+	grid: auto 1fr auto auto / 1fr;
+	/*gap: 18px;*/
+	place-items: start center;
+	padding: 28px;
+}
+
+.card2:not(:last-of-type) {
+	border-bottom: var(--border);
+}
+
+@media (min-width: 576px) {
+	.card2:not(:last-of-type) {
+		border-bottom: none;
+	}
+}
+
+@media (min-width: 1024px) {
+	.card2 {
+		grid: auto 1fr auto / 1fr;
+	}
+
+	.card2:not(:last-of-type) {
+		/*border: none;*/
+		border-right: var(--border);
+	}
+}
+
+.card2:hover h3 {
+	color: var(--color-main);
+}
+
+.card2-price {
+	/*grid-area: 3 / 1 / 4 / 2;*/
+	padding: 10px 0 14px;
+	font-weight: 600;
+	/*transition: 0.3s;*/
+}
+
+@media (min-width: 1024px) {
+	.card2-price {
+		grid-area: 3 / 1 / 4 / 2;
+	}
+}
+
+.card2-price span {
+	text-transform: uppercase;
+}
+
+.card2-btn {
+	/*grid-area: 3 / 1 / 4 / 2;
+	justify-self: stretch; это расположение для десктопа */
+	padding: 10px 20px;
+	font: 500 18px var(--font-family-heading);
+	text-align: center;
+	background-color: var(--color-main);
+	border: transparent;
+	/*opacity: 0;*/
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+@media (min-width: 1024px) {
+	.card2-btn {
+		grid-area: 3 / 1 / 4 / 2;
+		justify-self: stretch;
+		opacity: 0;
+	}
+
+	.card2-btn:hover {
+		opacity: 1;
+	}
+}
+
+
+
+
+/* Раздел Service: */
+
+.artblock {
+	display: grid;
+	grid-template-columns: 1fr 2.5fr;
+	/*gap: 40px;*/
+	margin: 0 calc(-1 * var(--container-padding));
+}
+
+@media (min-width: 576px) {
+	.artblock {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.artblock-text {
+	padding: 40px var(--container-padding) 40px 16px;
+	text-align: left;
+}
+
+@media (min-width: 576px) {
+	.artblock-text {
+		padding: 40px var(--container-padding) 40px 40px;
+	}
+}
+
+.artblock-text h2 {
+	text-align: left;
+}
+
+.artblock-img {
+	order: -1;
+	height: 100%;
+	min-height: 388px;
+}
+
+
+
+
+/* Галерея-3 с карточками новостей: */
+
+.gallery3 {
+	display: grid;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.card3 {
+	position: relative;
+	display: grid;
+	grid-template-rows: auto 1fr auto auto;
+	gap: 16px;
+	max-width: 330px;
+	padding: 174px 24px 24px;
+	/*background: linear-gradient(hsla(0, 0%, 100%, 0.001) 150px, hsl(0, 0%, 100%) 150px), border-box url('img/main-07.webp') 50% 0 / 100% auto no-repeat;*/
+	border: var(--border);
+	transition: 0.3s;
+}
+
+.c3-1 {
+	background: linear-gradient(hsla(0, 0%, 100%, 0.001) 150px, hsl(0, 0%, 100%) 150px), border-box url('/img/main-07.webp') 50% 0 / 100% auto no-repeat;
+}
+
+.c3-2 {
+	background: linear-gradient(hsla(0, 0%, 100%, 0.001) 150px, hsl(0, 0%, 100%) 150px), border-box url('/img/main-08.webp') 50% 0 / 100% auto no-repeat;
+}
+
+.c3-3 {
+	background: linear-gradient(hsla(0, 0%, 100%, 0.001) 150px, hsl(0, 0%, 100%) 150px), border-box url('/img/main-09.webp') 50% 0 / 100% auto no-repeat;
+}
+
+.card3:hover {
+	box-shadow: var(--shadow);
+}
+
+.card3 > * {
+	margin: 0;
+}
+
+.card3 a::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/*.card3 p {
+	max-height: 100px;
+	text-overflow: ellipsis;
+}*/
+
+.card3-more {
+	justify-self: end;
+	color: var(--color-main-dark);
+}
+
+.card3:hover .card3-more {
+	color: var(--color-main);
+}
+
+.news-date {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 600;
+}
+
+.news-date span {
+	text-transform: uppercase;
+}
+
+.morenews {
+	display: inline-block;
+	/*margin: 0 auto;*/
+	padding: 6px 16px 4px;
+	text-align: center;
+	color: var(--color-main-dark);
+	border: 1px solid transparent;
+	transition: 0.3s;
+}
+
+.morenews:hover {
+	border-color: var(--color-main);
+}
+
+
+
+
+/* Раздел Why choose us: */
+
+.gallery4 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 28px;
+	margin-bottom: 42px;
+}
+
+.p-40 {
+	padding: 40px 0;
+}
+
+
+
+
+/* Раздел Contact Us: */
+
+.contact-grid {
+	display: grid;
+	justify-items: center;
+	grid: auto 320px / auto;
+	align-items: stretch;
+	gap: 40px var(--margin-s);
+}
+
+@media (min-width: 576px) {
+	.contact-grid {
+		grid: auto / 290px 1fr;
+	}
+}
+
+@media (min-width: 1024px) {
+	.contact-grid {
+		gap: 40px;
+	}
+}
+
+/*---------------------------------------------------
+---- Ниже форма для отправки сообщения на емейл: ----
+---------------------------------------------------*/
+
+.form {
+	width: 100%;
+	min-width: 280px;
+	max-width: 370px;
+	/*margin: 0 auto 32px;*/
+	/*accent-color: var(--color-main); эксперимент с новым свойством */
+}
+
+/*.form-title {
+	margin-bottom: 26px;
+	font-size: var(--font-size-l);
+}*/
+
+.form-group {
+	position: relative;
+	/*z-index: 4;*/
+	margin-bottom: 16px;
+}
+
+.form-input {
+	position: relative;
+	/*z-index: 4; это моя доработка кода, убирает проблемы наложения фона form-03, input и label */
+	width: 100%;/* при max-width: 100%; инпут укорачивается, почему? */
+	min-height: 40px;/* 56px это базовая высота полей и кнопок при font: 500 20px/1.3 и высоте padding: 14px 26px */
+	padding: 13px 14px;/* это делает отступ до текста внутри поля и высоту самих полей, равную высоте кнопок */
+	font: 500 var(--font-size-l, 16px)/1 var(--font-family);
+	background-color: transparent;
+	border: var(--border);/* или 1px solid var(--grey);*/
+	transition: 0.4s ease-in-out;
+}
+
+.form-label {
+	position: absolute;
+	top: 14px;
+	left: 10px;
+	/*z-index: -1;  без этой команды названия полей label закрывают форму input и там не получается кликать по ней */
+	padding: 0 4px;
+	font: 400 var(--font-size-l, 16px)/1 var(--font-family);
+	color: var(--color-grey);
+	transition: 0.3s ease-in-out;
+	pointer-events: none;/* было var(--black-transparent); *//* плюшка для сенсорных экранов, не знаю что конкретно выключает */
+}
+
+.form textarea {
+	display: block;/* убирает отступ-строку под элементом */
+	line-height: var(--line-height-s, 1.2);
+	resize: none;/* resize: vertical; разрешает изменять размер поля ввода только по вертикали */
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+	top: -6px;
+	/*left: 0;*/
+	z-index: 5;
+	font-size: var(--font-size-s);
+	color: var(--color-main);
+	background-color: var(--bg, hsl(0, 0%, 100%));/* было -18px */
+}
+
+.form-input:focus {
+	background-color: var(--bg);
+	border-color: var(--color-main);
+	outline: none;
+	/*box-shadow: inset 0 0 0 1px var(--color-main);*/
+}
+
+/* Чекбокс: */
+
+.check {
+	display: block;
+	margin-bottom: 9px;
+	padding-left: 1.4em;
+	cursor: pointer;
+}
+
+.check:last-of-type {
+	margin-bottom: 17px;
+}
+
+.check-input {
+	position: absolute;/* это для удаления пробела между чекбоксом и подписью-лейблом */
+	-moz-appearance: none;
+	appearance: none;/* это для удаления браузерного оформления чекбокса */
+}
+
+.check-box {
+	position: absolute;
+	width: 0.8em;
+	height: 0.8em;
+	margin-top: 0.3em;
+	margin-left: -1.3em;
+	background: hsl(0, 0%, 100%);
+	/*border-radius: .05em;*/
+	box-shadow: 0 0 0 0.08em var(--color, hsl(0, 0%, 0%));
+}/* это настройка чекбокса и состояние когда он пустой */
+
+.check-input:checked + .check-box {
+	background-color: var(--color-main);
+	background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7" fill="none"%3E%3Cpath d="M1 3L3 5L6 2" stroke="%23fff"/%3E%3C/svg%3E');
+	box-shadow: 0 0 0 0.08em var(--color-main);
+}/* это состояние чекбокса когда поставлена галка */
+
+.check-input:focus + .check-box {
+	box-shadow: 0 0 0 0.08em var(--color-main), 0 0 0 0.2em var(--bg, hsl(0, 0%, 100%)), 0 0 0 0.3em hsl(204, 100%, 84%);/* это повторяет текущую тень и добавляет вторую для выделения фокуса */
+}
+
+.check-input:disabled + .check-box {
+	opacity: 0.5;/* это делает выключенные (disabled) чекбоксы полупрозрачными */
+	filter: grayscale(0.8);/* это делает выключенные (disabled) чекбоксы серенькими */
+}
+
+.btn-grid {
+	display: grid;
+	grid: auto / 1fr 1fr;
+	/*display: flex;
+	flex-direction: column;
+	align-items: center;*/
+	gap: 16px;
+}
+/* Конец формы */
+
+.map {
+	width: 100%;
+	max-width: 1000px;
+	height: 100%;
+	max-height: 400px;
+	background: url('/img/map.webp') 50% / cover;
+}
+
+
+
+
+/*-------------- Футер: ------------------*/
+
+.footer {
+	color: hsl(0, 0%, 100%);
+	background-color: hsl(197, 10%, 14%);
+}
+
+.footer-grid {
+	display: grid;
+	grid: auto auto auto / 1fr 1fr;
+	gap: 40px 16px;
+	padding: 44px 0;/* было 56px 0; у донора */
+}
+
+@media (max-width: 575px) {
+	.footer-logo {
+		grid-column: span 2;
+	}
+}
+
+@media (min-width: 575px) {
+	.footer-grid {
+		grid: auto auto / 1fr 1fr 1fr;
+	}
+}
+
+@media (min-width: 800px) {
+	.footer-grid {
+		grid: auto / 1fr 1fr 1fr 1fr 1fr 1fr;
+		padding: 56px 0;
+	}
+}
+
+.footer-links > * {
+	margin-bottom: 10px;
+	font-size: var(--font-size-s, 12px);
+}
+
+select {
+	cursor: pointer;
+}
+
+.footer-links select {
+	background: hsla(0, 0%, 0%, 0.01);
+	border: none;
+}
+
+.footer-links option {
+	background-color: hsl(197, 10%, 14%);
+}
+
+.footer-tels > * {
+	margin-bottom: 6px;
+	font-size: var(--font-size-m, 14px);
+}
+
+.copyright {
+	color: hsl(204, 59%, 88%);
+}
+
+.footer-grid a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+/* Модал с JS Bootstrap Modal: */
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1055;
+	display: none;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;/* эти два оверфлоу на случай если в модале много контента (больше чем помещается на страницу) и для беспроблемной анимации */
+	outline: 0;
+}
+
+.modal-dialog {
+	position: relative;
+	display: grid;/* это для расположения модала по центру */
+	place-items: center;
+	width: auto;
+	min-height: calc(100% - 28px);
+	margin: 14px;/* это отступы модала до краёв экрана на мобилках! */
+	pointer-events: none;
+}
+
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 500px;
+		min-height: calc(100% - 56px);/* это ставится когда модал расположен по центру окна */
+		margin: 28px auto;/* это отступы если располагать модал сверху экрана, а не по середине */
+	}
+}
+
+/* Анимация проявления модала: */
+
+@media (prefers-reduced-motion: no-preference) {
+	.fade {
+		transition: opacity 0.2s linear;
+	}
+}
+
+.fade:not(.show) {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.modal-dialog {
+		transform: scale(0.8);/*или translate(0, -30px); или другие анимации! */
+		transition: transform 0.3s ease-out;
+	}
+}
+
+/* этот класс добавляется скриптом для анимации проявления окна: */
+
+.modal.show .modal-dialog {
+	transform: none;
+}
+
+/* этот класс добавляется скриптом когда кликаешь по оверлею в режиме статичного фона: */
+
+.modal.modal-static .modal-dialog {
+	transform: scale(1.02);
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1050;
+	width: 100vw;
+	height: 100vh;
+	background-color: hsl(0, 0%, 0%);
+}
+
+.modal-backdrop.fade {
+	opacity: 0;
+}
+
+.modal-backdrop.show {
+	opacity: 0.5;
+}
+
+
+/* Оформление внутреннего контента модала: */
+
+.modal-content {
+	position: relative;
+	/*z-index: 7;*/
+	width: 100%;
+	max-width: 800px;
+	max-height: 100vh;
+	padding: var(--margin-m) var(--margin-s);
+	overflow-y: auto;
+	background-color: var(--bg, hsl(0, 0%, 100%));
+	background-clip: padding-box;
+	outline: 0;
+	pointer-events: auto;
+	overscroll-behavior-y: contain;/* или 90% *//* это убирает цепочку прокрутки у body! */
+}
+
+@media (min-width: 1024px) {
+	.modal-content {
+		padding: 40px 60px 44px;
+	}
+}
+
+.modal-content h3 {
+	text-align: center;
+}
+
+.modal-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	/*display: grid;
+	place-items: center;
+	display: block;
+	margin-left: auto; это другой способ расположить крестик справа */
+	width: 44px;
+	height: 44px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	appearance: none;
+}/* можно эту кнопку не позиционировать, а задать размер и сместить вправо */
+
+.modal-close::before,
+.modal-close::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	display: block;
+	width: 22px;
+	height: 2px;
+	background-color: var(--color);
+}
+
+.modal-close::before {
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.modal-close::after {
+	transform: translateX(-50%) rotate(-45deg);
+}
+
+.modal-content .form {
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------
+------------- Страница Shop: -----------------
+--------------------------------------------*/
+
+/* Ниже элемент Хлебные крошки (breadcrumb): */
+
+.breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 12px;
+	padding-top: 12px;
+	font: 400 var(--font-size-s)/var(--line-height-s) var(--font-family);
+	/*text-align: center; это было до применения флексов */
+}
+
+.breadcrumb li:not(:first-of-type)::before {
+	content: '—';
+	/*padding: 0 4px;*/
+}/* это разделитель между менюшками-ссылками, так его легко менять во всем сайте (не придётся редактировать каждую страницу html). */
+
+.breadcrumb a,
+.breadcrumb span {
+	padding: 11px 5px;
+}
+
+.filter-wrap {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+	gap: var(--margin-s);
+	/*display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;*/
+	margin-bottom: 20px;
+}
+
+/* Спойлер с выпадающими фильтрами: */
+
+/*.spoiler {
+	margin-bottom: 21px;
+}*/
+
+.spoiler-summary {
+	display: block;/* или display: flex; или list-style-type: none; это новые свойства для удаления иконки-треугольника у раскрывающегося списка */
+	transition: 0.4s 0.1s;
+}
+
+.filter {
+	text-transform: uppercase;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	appearance: none;
+}
+
+.filter::before {
+	content: url('/img/svg/bullets-3.svg');
+	padding-right: 5px;
+	vertical-align: middle;
+}
+
+/*.spoiler-summary:hover,
+.spoiler-summary:focus {
+	transform: rotate(20deg);
+	transition: .3s;
+}*/
+
+.spoiler-content {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 40px;
+	padding: 16px 0;
+	font-size: var(--font-size-s);
+}
+
+.filter-title {
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+/* Чекбокс в фильтре: */
+
+.filter-check {
+	display: block;
+	margin-bottom: 4px;
+	cursor: pointer;
+}
+
+.filter-check-input {
+	/*position: absolute; это для удаления пробела между чекбоксом и подписью-лейблом */
+	-moz-appearance: none;
+	appearance: none;/* это для удаления браузерного оформления чекбокса */
+}
+
+/* Состояние checked: */
+
+.filter-check-input:checked + .filter-check-box,
+.filter-check-input:checked {
+	color: var(--color-main);
+}/* это состояние чекбокса когда поставлена галка */
+
+/* Состояние focus:
+.check-input:focus + .check-box {
+	box-shadow: 0 0 0 .1em hsl(240, 100%, 50%), 0 0 0 .2em hsl(350, 100%, 88%);
+}*/
+
+/*.check-input:checked:focus + .check-box {
+	background-image: url('img/on-focus.svg'); это кастомный чекбокс картинкой
+}*/
+
+details[open] .filter {
+	color: var(--color-main);
+}
+
+/*.filter::before {
+	transform: rotate(90deg);
+}*/
+
+@media (prefers-reduced-motion: no-preference) {
+	details[open] summary ~ * {
+		animation: spoiler 0.5s ease-in-out;
+	}
+
+	@keyframes spoiler {
+		0% {
+			transform: translateY(-6px);
+			opacity: 0;
+		}
+	}
+}
+
+.filter-price-inputs {
+	display: flex;
+	gap: 8px;
+}
+
+.filter-price-inputs label {
+	display: block;
+}
+
+
+.sort {
+	font-size: var(--font-size-s);
+}
+
+.sort-select {
+	background-color: transparent;
+	border: none;
+	/*appearance: none;*/
+}
+
+.load {
+	width: 100%;
+	/*width: 288px; у донора было 288px */
+	min-width: 278px;
+	max-width: 300px;
+	padding: 16px;
+	border: var(--border);
+	transition: 0.3s;
+}
+
+.load-btn {
+	width: 100%;
+	height: 100%;
+	letter-spacing: 0.03em;
+	color: var(--color-second);
+	background-color: transparent;
+	border: none;
+	cursor: pointer;/* было var(--color-main); */
+}
+
+.load-btn-text::before {
+	content: url('/img/svg/clockwise-rotation.svg');
+	display: block;
+	width: 88px;
+	height: 88px;
+	margin: 0 auto;
+}
+
+
+
+
+
+/*------------------------------------------
+---------- Страницы товаров: ---------------
+------------------------------------------*/
+
+.product-grid {
+	display: grid;
+	grid-template-columns: 1fr;/* grid-template-columns: 1fr 1fr; на десктопе */
+	place-items: start;
+	gap: var(--margin-m);
+	margin-bottom: var(--margin-l);
+	padding-top: 20px;
+}
+
+@media (min-width: 1024px) {
+	.product-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/*.product-grid-1 {
+	padding-left: 72px;
+}*/
+
+.product-grid-1 h1 {
+	margin: 0;
+}
+
+.product-grid-1 > div {
+	display: flex;
+	/*flex-wrap: wrap;*/
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--margin-s);
+	margin-bottom: 24px;
+}
+
+.p-favorite {
+	background-image: url('/img/svg/favorite_border_black_24dp.svg');
+}
+
+.p-rating::after {
+	content: '(12)';
+	position: absolute;
+	left: 85px;
+}
+
+.p-number {
+	font-weight: 300;
+}
+
+.p-price {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.p-price div {
+	font-weight: 400;
+	font-size: var(--font-size-s);
+	color: green;
+}
+
+.p-link {
+	font-size: var(--font-size-s);
+	color: var(--color-grey);
+}
+
+/* Слайдер с фото товара: */
+
+.carousel {
+	position: relative;
+	grid-area: 1 / 1 / 2 / 2;
+	display: grid;
+	grid: 1fr auto / auto;
+	place-items: center;
+	/*align-items: center;*/
+	gap: var(--margin-xs);
+	max-width: 460px;
+	max-height: 400px;
+	overflow: hidden;/* у донора было 30px *//*100%;*/
+}
+
+@media (min-width: 576px) {
+	.carousel {
+		grid: auto /  1fr auto;
+	}
+}
+
+.carousel-inner {
+	position: relative;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border: var(--border);
+	aspect-ratio: 1 / 1;/* было 200px; *//* будет работать? */
+	/*scroll-snap-type: y mandatory;*/
+}
+
+.carousel-inner::after {
+	content: '';
+	display: block;
+	clear: both;
+}/* это какой-то clear-фикс */
+
+/*@media (prefers-reduced-motion: no-preference) {
+	.carousel-inner {
+		scroll-behavior: smooth;
+	}
+}*/
+
+@media (min-width: 576px) {
+	.carousel-inner {
+		width: 300px;
+		max-width: 320px;
+		height: 300px;
+		max-height: 320px;
+	}
+}
+
+/* Слайд-карточка: */
+
+.carousel-item {
+	position: relative;
+	display: none;
+	float: left;
+	width: 100%;
+	height: 100%;
+	/*height: 512px; это задаёт высоту слайдам и всему слайдеру */
+	/*max-height: 600px; это для профилактики размеров */
+	margin-right: -100%;
+	backface-visibility: hidden;
+	/*scroll-snap-align: start;*/
+	transition: 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.carousel-item {
+		transition: none;
+	}
+}
+
+/* Механизм показа и анимации слайдов: */
+
+.carousel-item.active {
+	display: block;
+}
+
+/* эти классы подставляет скрипт для анимации: */
+
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+	transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+	transform: translateX(-100%);
+}
+
+.carousel-item > img /* моя идея: .carousel-item:first-child */ {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 100%;
+	/*height: 512px;*/
+	object-fit: cover;/* или contain ? */
+	background-color: hsl(157, 84%, 80%);
+}
+
+
+/* Пагинация слайдов: */
+
+.carousel-indicators {
+	/*position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;*/
+	display: flex;
+	justify-content: center;
+	gap: var(--margin-xs);
+	margin-right: 15%;
+	margin-bottom: 16px;
+	margin-left: 15%;
+	list-style: none;
+	/*overflow: hidden;*/
+}
+
+.carousel-indicators [data-bs-target] {
+	flex: 0 1 auto;
+	flex-shrink: 0;
+	box-sizing: content-box;
+	width: 48px;
+	height: 48px;
+	margin: 2px;
+	/*
+	text-indent: -999px;
+	background-color: hsl(0, 0%, 100%);
+	background-clip: padding-box;
+	border: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	opacity: 0.5;*/
+	border: var(--border);
+	cursor: pointer;
+	transition: opacity 0.6s ease;/* это чтобы было видно обводку картинок при ховере/курренте */
+}
+
+@media (min-width: 576px) {
+	.carousel-indicators {
+		grid-area: 1 / 1 / 2 / 2;
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 576px) {
+	.carousel-indicators [data-bs-target] {
+		width: 60px;
+		height: 60px;
+	}
+}
+
+.carousel-indicators [data-bs-target]:hover {
+	box-shadow: 0 0 0 1px var(--color);/* или var(--color-main) */
+}
+/* Конец слайдера товара */
+
+
+.card-review {
+	max-width: 600px;
+	margin-bottom: 12px;
+	padding: var(--margin-s);
+	border: var(--border);
+}
+
+.card-review-head {
+	display: grid;
+	grid: auto / 1fr auto auto;
+	align-items: center;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-xs);
+}
+
+.c-r-name {
+	font-weight: 600;
+}
+
+.card-review p {
+	margin-bottom: 0.8em;
+	line-height: var(--line-height-s);
+}
+
+.card-review p:last-of-type {
+	margin-bottom: 0;
+}
+
+.product-grid-3 {
+	display: grid;
+	grid: auto auto / auto auto;
+	gap: var(--margin-s);
+}
+
+.p-decs-1 {
+	grid-column: span 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------*/
+
+.vh {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	border: 0;
+	-webkit-appearance: none;
+	appearance: none;
+	clip: rect(0 0 0 0);
+	-webkit-clip-path: inset(100%);
+	clip-path: inset(100%);/*clip: rect(1px, 1px, 1px, 1px);*//*clip-path: inset(0px 0px 99.9% 99.9%);*/
+}/* Это код для визуально-скрытых (visually-hidden) элементов html */
+
+/*-----------------------------------------------------------------
+---- Адаптивные версии сайта (adaptive versions, mobile first) ----
+-- Сайт первоначально разработан для мобильных экранов до 575px ---
+-----------------------------------------------------------------*/
+
+/* @media (min-width: 576px) {} или @media (width > 575px) {} */
+
+/* @media (min-width: 1024px) {} или @media (width > 1023px) {} */
+
+/* @media (min-width: 2500px) {} или @media (width > 2500px) {} */
+
+/* Ниже полное отключение анимаций на сайте если включена настройка prefers-reduced-motion: reduce: */
+
+@media (prefers-reduced-motion: reduce) /*(prefers-reduced-motion)*/ {
+	* {
+		transition: none !important;
+		animation: none !important;
+		scroll-behavior: auto !important;/*animation-name: dissolve !important;*//* или transition-duration: .05s; *//* сбрасывает плавный скролл по якорям */
+	}
+}/* Лучше эту настройку убрать и гасить каждую опасную анимацию индивидуально в коде */
