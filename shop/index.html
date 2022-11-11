@@ -1,0 +1,512 @@
+<!doctype html><!-- Страница bullet.none/shop/ -->
+<html lang="en">
+<head>
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/bullet.css">
+	<link rel="icon" type="image/svg+xml" sizes="any" href="/img/svg/favicon.svg">
+	<meta name="theme-color" content="#fdbe2b">
+	<meta name="author" content="Oleg Mitorun">
+	<link rel="preload" as="image" href="/img/sprite.svg">
+
+	<title>Bullet Shop</title>
+	<meta name="description" content="Shop with weapons and ammunition">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Bullet Shop">
+	<meta property="og:description" content="Shop with weapons and ammunition">
+	<meta property="og:site_name" content="Bullet">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="/img/og.jpg">
+	<!--<meta property="og:url" content="https://mitorun.studio/shop/">-->
+	<!--<link rel="canonical" href="https://mitorun.studio/shop/">-->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+	<header class="header">
+		<div class="container">
+			<div class="header-grid">
+				<a class="header-brand" href="/" aria-label="bullet">
+					<!--<img src="/img/logo.png" alt="logo">-->
+					<svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" importance="high">
+						<mask id="mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="96" height="96">
+							<circle cx="50" cy="50" r="48" fill="#3F4751" />
+						</mask>
+						<g id="logo" mask="url(#mask)">
+							<rect width="100" height="100" fill="#3F4751" />
+							<path d="M38 16L26 83L43 100H100V51L65 16L57 35L38 16Z" fill="#212628" />
+							<g id="bullet">
+								<path d="M26 76V83H48V76H46V34C46 30 44 26 44 26L40 18C38.5 15 35.5 15 34 18L30 26C30 26 28 30 28 34V76H26Z" fill="#FFD400" />
+								<path d="M47 38H27V76H47V38Z" fill="#FDB811" />
+								<path d="M40 18C39.32 16.63 38.25 15.75 37 15.75V83H48V76H47V38H46V34C46 30 44 26 44 26L40 18Z" fill="#00000021" />
+							</g>
+							<use href="#bullet" transform="translate(27)" />
+						</g>
+					</svg>
+				</a>
+
+
+				<nav class="navbar-collapse collapse" id="navbar">
+					<ul class="navbar-nav">
+						<li><a class="nav-link" href="/shop/" aria-current="page">Shop</a></li>
+						<li><a class="nav-link" href="/shop/">Range</a></li>
+						<li><a class="nav-link" href="/shop/">Courses</a></li>
+						<li><a class="nav-link" href="/shop/">Service</a></li>
+						<li><a class="nav-link" href="/shop/">News</a></li>
+					</ul>
+				</nav>
+
+
+				<form class="form-search" target="_blank" method="get" action="https://www.google.com/search">
+					<label class="vh" for="search">Site search</label>
+					<input id="search" name="q" type="search" placeholder="Site search" title="Search for:" aria-label="Site search">
+					<input type="hidden" name="sitesearch" value="mitorun.studio/">
+					<button type="submit" value="Search" title="Start search">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#search"></use>
+						</svg>
+					</button>
+				</form>
+
+
+				<div class="icons">
+					<a class="icon icon-favorites" href="#" aria-label="Go to favorites" title="Favorites">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#favorite"></use>
+						</svg>
+					</a>
+
+					<a class="icon icon-cart" href="#" aria-label="Go to cart" title="Cart">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#cart"></use>
+						</svg>
+					</a>
+
+					<button class="icon icon-account dialog-open" type="button" data-bs-toggle="modal" data-bs-target="#registration" aria-label="Open login dialog" title="Login">
+						<svg width="24px" height="24px" aria-hidden="true">
+							<use href="/img/sprite.svg#account"></use>
+						</svg>
+					</button>
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" title="Menu" aria-label="Navigation menu">
+						<span class="navbar-toggler-line"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+
+	<main>
+
+		<!-- Shop Firstscreen: -->
+		<section class="section">
+			<div class="container">
+
+
+				<ol class="breadcrumb" aria-label="breadcrumb">
+					<li><a href="/">Home</a></li>
+					<li><span aria-current="page">Shop</span></li>
+				</ol>
+
+
+				<h1 class="vh">Shop</h1>
+				<h2>All weapons</h2>
+
+
+				<div class="filter-wrap">
+					<!--<button class="filter" type="button">Filtration</button>-->
+					<details class="spoiler">
+						<summary class="spoiler-summary filter">Filtration</summary>
+						<div class="spoiler-content">
+							<div class="filter-type">
+								<p class="filter-title">Type:</p>
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Handguns</span>
+								</label>
+
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Rifles</span>
+								</label>
+
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Shotguns</span>
+								</label>
+
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Airsoft</span>
+								</label>
+
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Crossbows</span>
+								</label>
+
+								<label class="filter-check">
+									<input class="filter-check-input" type="checkbox">
+									<span class="filter-check-box">Flare guns</span>
+								</label>
+							</div>
+
+							<div class="filter-price">
+								<p class="filter-title">Price:</p>
+								<div class="filter-price-inputs">
+									<div>
+										<label for="pricelow">from $</label>
+										<input type="number" id="pricelow" name="pricelow" min="0" max="9998" value="0" step="100">
+									</div>
+
+
+									<div>
+										<label for="pricehigh">to $</label>
+										<input type="number" id="pricehigh" name="pricehigh" min="1" max="9900" value="9900" step="100">
+									</div>
+
+								</div>
+
+								<!--<input type="range" id="price" name="price" min="0" max="10000" value="90" step="1000">
+								<label for="price">Price</label>-->
+							</div>
+						</div>
+					</details>
+
+
+					<div class="sort">Sort by:
+						<select class="sort-select" name="" id="">
+							<option value="">relevance</option>
+							<option value="">price low</option>
+							<option value="">price high</option>
+						</select>
+					</div>
+				</div>
+
+
+				<ul class="gallery">
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Glock G37 Gen3 PI3750201 45 GAP 4.49" 10+1 Black Steel Slide Black</a></h3>
+						<p class="card-tag">Handgun</p>
+						<img class="card-img" src="/img/card-15.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price cbp-680">$599</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Mil-Spec AR-15 5.56 NATO 16" Barrel B5</a></h3>
+						<p class="card-tag">Rifle</p>
+						<img class="card-img" src="/img/card-04.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price cbp-1499">$1253</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">BROWNING CITORI 725 SPORTING NON PORTED 12 GA</a></h3>
+						<p class="card-tag">Shotgun</p>
+						<img class="card-img" src="/img/card-10.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price cbp-3580">$2979</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Smith & Wesson M&P15-22 Pistol 8" Barrel w/ SBA3 Brace</a></h3>
+						<p class="card-tag">Handgun</p>
+						<img class="card-img" src="/img/card-12.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$420</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">JTS M12AR 12 Gauge AR Style Semi Auto Shotgun 18" Barrel 5 Round</a></h3>
+						<p class="card-tag">Shotgun</p>
+						<img class="card-img" src="/img/product-1.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$699</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Kalashnikov USA AK47 Style 12 Gauge Semi-Automatic Shotgun 18" Barrel</a></h3>
+						<p class="card-tag">Shotgun</p>
+						<img class="card-img" src="/img/card-11.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$999</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">CZ SHADOW 2 ORANGE 9MM 17 RD</a></h3>
+						<p class="card-tag">Handgun</p>
+						<img class="card-img" src="/img/card-13.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$780</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Ruger AR-556 5.56 NATO/.223 Remington AR-15 Style Rifle</a></h3>
+						<p class="card-tag">Rifle</p>
+						<img class="card-img" src="/img/card-01.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$650</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Rock Island VR80SMOKE VR80 12 Gauge 20" 5+1 3" Smoke Cerakote Synthetic</a></h3>
+						<p class="card-tag">Rifle</p>
+						<img class="card-img" src="/img/card-02.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$799</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">SIG SAUER TREAD 7.62X51 NATO 16"</a></h3>
+						<p class="card-tag">Rifle</p>
+						<img class="card-img" src="/img/card-03.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$1299</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="card">
+						<h3 class="card-title"><a class href="/shop/shotgun/">Mossberg MC1sc 9mm Luger Subcompact Semi Auto Pistol</a></h3>
+						<p class="card-tag">Handgun</p>
+						<img class="card-img" src="/img/card-14.webp" alt="Товар №1">
+						<div class="card-rating"></div>
+						<div class="card-buy">
+							<p class="card-buy-price">$419</p>
+							<button class="icon card-buy-cart" type="button" aria-label="add to cart"></button>
+						</div>
+						<button class="icon card-favorite" type="button" aria-label="add to favorites"></button>
+					</li>
+
+
+					<li class="load">
+						<button class="load-btn" type="button">
+							<span class="h3 load-btn-text">Load more</span>
+						</button>
+					</li>
+				</ul>
+
+			</div>
+		</section>
+
+
+	</main>
+
+
+	<!-- Footer: -->
+	<footer class="footer">
+		<div class="container">
+
+			<div class="footer-grid">
+				<a class="footer-logo" href="/">
+					<svg width="40" height="40" viewBox="0 0 100 100" aria-label="bullet">
+						<use href="#logo" />
+						<!--<mask id="mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="96" height="96">
+								<circle cx="50" cy="50" r="48" fill="#3F4751"/>
+							</mask>
+							<g mask="url(#mask)">
+								<rect width="100" height="100" fill="#3F4751"/>
+								<path d="M38 16L26 83L43 100H100V51L65 16L57 35L38 16Z" fill="#212628"/>
+								<g id="bullet">
+									<path d="M26 76V83H48V76H46V34C46 30 44 26 44 26L40 18C38.5 15 35.5 15 34 18L30 26C30 26 28 30 28 34V76H26Z" fill="#FFD400"/>
+									<path d="M47 38H27V76H47V38Z" fill="#FDB811"/>
+									<path d="M40 18C39.32 16.63 38.25 15.75 37 15.75V83H48V76H47V38H46V34C46 30 44 26 44 26L40 18Z" fill="#00000021"/>
+								</g>
+								<use href="#bullet" transform="translate(27)"/>
+							</g>-->
+					</svg>
+				</a>
+
+
+				<ul class="footer-links footer-menu">
+					<li><a class href="/shop/" aria-current="page">Shop</a></li>
+					<li><a class href="/shop/">Range</a></li>
+					<li><a class href="/shop/">Courses</a></li>
+					<li><a class href="/shop/">Service</a></li>
+					<li><a class href="/shop/">News</a></li>
+				</ul>
+
+
+				<ul class="footer-links">
+					<li><a class href="#">Help & Contacts</a></li>
+					<li><a class href="#">Vacancies</a></li>
+					<li><a class href="#">Partnership</a></li>
+					<li><a class href="#">Wholesale</a></li>
+					<li>
+						<select name="" id="">
+							<option value="">En</option>
+							<option value="">Ru</option>
+						</select>
+					</li>
+				</ul>
+
+
+				<ul class="footer-links footer-info">
+					<li><a class href="#">About</a></li>
+					<li><a class href="#">Terms of Use</a></li>
+					<li><a class href="#">Return and Refund Policy</a></li>
+				</ul>
+
+
+				<div class="footer-links footer-tels">
+					<p>Call-center</p>
+					<div><a href="tel:+1077225331">+1 (07) 722-53-31</a></div>
+					<div><a href="tel:+1637298409">+1 (63) 729-84-09</a></div>
+				</div>
+
+
+				<div class="footer-links copyright">
+					<div><a clas rel="noopener" target="_blank" href="https://www.behance.net/gallery/132435653/BULLET-More-than-just-a-shop">Design Denis Klimenko</a></div>
+					<div><a class href="https://mitorun.studio/">Code Mitorun Studio</a></div>
+					<div>© 2021 bullet.none</div>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+
+	<!-- Модал №1 для регистрации: -->
+	<div class="modal fade" id="registration" tabindex="-1" aria-hidden="true" aria-labelledby="modalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<button class="modal-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть диалог"></button>
+
+				<form class="form">
+					<h3 id="modalLabel">Registration</h3>
+					<div class="form-group">
+						<input class="form-input" id="formName2" type="text" name="name" autocomplete="name" maxlength="40" minlength="4" placeholder=" ">
+						<label class="form-label" for="formName2">Your name</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formTel2" type="tel" name="tel" autocomplete="tel" maxlength="16" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formTel2">Phone number *</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formEmail2" type="email" name="email" autocomplete="email" maxlength="100" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formEmail2">Email *</label>
+					</div>
+
+					<label class="check">
+						<input class="check-input" type="checkbox">
+						<span class="check-box"></span>I confirm that I am 21 years old
+					</label>
+
+					<label class="check">
+						<input class="check-input" type="checkbox">
+						<span class="check-box"></span>I consent to the processing of my personal data
+					</label>
+
+					<div class="btn-wrap">
+						<button class="button" type="button" data-bs-dismiss="modal">Register now</button>
+						<a class="button-login" href="#"><span>Already have an account?</span><br>Login</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Модал №2 для консультации: -->
+	<div class="modal fade" id="consultation" tabindex="-1" aria-hidden="true" aria-labelledby="modalLabel2">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<button class="modal-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть диалог"></button>
+
+				<form class="form">
+					<h3 id="modalLabel2">Consultation</h3>
+					<div class="form-group">
+						<input class="form-input" id="formName3" type="text" name="name" autocomplete="name" maxlength="40" minlength="4" placeholder=" ">
+						<label class="form-label" for="formName3">Your name</label>
+					</div>
+
+					<div class="form-group">
+						<input class="form-input" id="formTel3" type="tel" name="tel" autocomplete="tel" maxlength="16" minlength="6" placeholder=" " required>
+						<label class="form-label" for="formTel3">Phone number *</label>
+					</div>
+
+					<div class="btn-wrap">
+						<button class="button" type="button" data-bs-dismiss="modal">Call me back</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Все скрипты сайта: -->
+	<!--<script defer src="/mitorun.js"></script>-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+	<noscript>У вас в браузере отключён JavaScript</noscript>
+
+
+</body>
+
+</html>
