@@ -1169,19 +1169,19 @@ noscript {
 }
 
 .gun-1 {
-	background-image: url('./img/svg/gun-1.svg');
+	background-image: url('./img/sprite.svg#gun-1');
 }
 
 .gun-2 {
-	background-image: url('./img/svg/gun-2.svg');
+	background-image: url('./img/sprite.svg#gun-2');
 }
 
 .gun-3 {
-	background-image: url('./img/svg/gun-3.svg');
+	background-image: url('./img/sprite.svg#gun-3');
 }
 
 .gun-4 {
-	background-image: url('./img/svg/gun-4.svg');
+	background-image: url('./img/sprite.svg#gun-4');
 }
 
 /*.shootgal-grid {
@@ -1609,7 +1609,7 @@ noscript {
 	max-width: 1000px;
 	height: 100%;
 	max-height: 400px;
-	background: url('./img/map.webp') 50% / cover;
+	background: url('./img/map.png') 50% / cover;
 }
 
 
