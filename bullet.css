@@ -1896,7 +1896,7 @@ select {
 }
 
 .filter::before {
-	content: url('./img/svg/bullets-3.svg');
+	content: url('./img/sprite.svg#bullets-3');
 	padding-right: 5px;
 	vertical-align: middle;
 }
@@ -2012,7 +2012,7 @@ details[open] .filter {
 }
 
 .load-btn-text::before {
-	content: url('./img/svg/clockwise-rotation.svg');
+	content: url('./img/sprite.svg#clockwise-rotation');
 	display: block;
 	width: 88px;
 	height: 88px;
@@ -2060,7 +2060,7 @@ details[open] .filter {
 }
 
 .p-favorite {
-	background-image: url('./img/svg/favorite_border_black_24dp.svg');
+	background-image: url('./img/sprite.svg#favorite-border-black-24dp');
 }
 
 .p-rating::after {
